@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import Filters from "../Filters/Filters";
+import Pagination from "../Pagination/Pagination";
+import Search from "../Search/Search";
 
 function Home() {
-  let [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
-  let { info, results } = data;
+  const [search, setSearch] = useState("");
+  const { info, results } = data;
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}`;
 
   useEffect(() => {
     (async function () {
-      let data = await fetch(api)
+      const data = await fetch(api)
         .then((res) => res.json())
         .catch((err) => console.log(err));
       setData(data);
@@ -22,6 +25,7 @@ function Home() {
       <h1 className="text-center title-text my-3">
         Rick & Morty <span className="text-danger">Library!</span>
       </h1>
+      <Search setPage={setPage} setSearch={setSearch} />
 
       <div className="container">
         <div className="row">
@@ -35,6 +39,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Pagination page={page} setPage={setPage} />
     </div>
   );
 }
