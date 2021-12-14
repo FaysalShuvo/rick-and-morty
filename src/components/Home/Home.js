@@ -39,7 +39,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <Pagination page={page} setPage={setPage} />
+      <Pagination info={info} page={page} setPage={setPage} />
     </div>
   );
 }
