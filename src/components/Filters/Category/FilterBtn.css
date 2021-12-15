@@ -1,0 +1,9 @@
+input[type="radio"] {
+  display: none;
+}
+
+.form-check-input:checked + label {
+  background-color: crimson;
+  color: white;
+  outline: none !important;
+}

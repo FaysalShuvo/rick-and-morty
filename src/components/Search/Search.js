@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Search.module.scss";
 
 function Search({ setSearch, setPage }) {
+ 
   return (
     <form className="d-flex justify-content-center">
       <input

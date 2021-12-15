@@ -8,9 +8,10 @@ function Home() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("");
   const { info, results } = data;
 
-  const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}`;
+  const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}&status=${status}`;
 
   useEffect(() => {
     (async function () {
@@ -29,9 +30,7 @@ function Home() {
 
       <div className="container">
         <div className="row">
-          <div className="col-3">
-            <Filters />
-          </div>
+          <Filters setStatus={setStatus} setPage={setPage} />
           <div className="col-8">
             <div className="row">
               <Cards results={results} />
